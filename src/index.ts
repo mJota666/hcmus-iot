@@ -10,6 +10,8 @@ import ReceiveAndStoreData from "./api/ReceiveAndStoreData";
 import database from "./config/database/database";
 import { publishMessage } from "./config/mqtt/connectToMqttBroker";
 import PublishData from "./api/PublishData";
+import updateUserLightColor from "./api/updateUserLightColor";
+import updateUserLightBrightness from "./api/updateUserLightBrightness";
 
 const port: number = 3000;
 const app: Express = express();
@@ -37,6 +39,8 @@ router(app);
 ReceiveAndStoreData(app);
 PublishData(app);
 GetData(app);
+updateUserLightColor(app);
+updateUserLightBrightness(app);
 
 
 /* Set view Engine */

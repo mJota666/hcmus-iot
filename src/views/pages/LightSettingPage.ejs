@@ -10,20 +10,20 @@ class="w-full h-3/6 sm:w-5/12 sm:h-full rounded-2xl shadow-xl bg-white flex flex
     <div class="w-full h-5/6 flex flex-col justify-start items-center gap-4 pt-10">
       <!-- Mode 1: Slider -->
       <div class="p-4 w-3/5 h-16 bg-gray-400 text-white rounded-3xl shadow-2xl text-center flex justify-between items-center">
-        <span id="mode1-value">100</span>
-        <input type="range" id="mode1-slider" class="w-3/4" min="0" max="100" value="100" />
+        <span id="mode1-value"><%=lightMode1%></span>
+        <input type="range" id="mode1-slider" class="w-3/4" min="0" max="100" value="<%=lightMode1%>" />
       </div>
     
       <!-- Mode 2: Slider -->
       <div class="p-4 w-3/5 h-16 bg-gray-500 text-white rounded-3xl shadow-2xl text-center flex justify-between items-center">
-        <span id="mode2-value">50</span>
-        <input type="range" id="mode2-slider" class="w-3/4" min="0" max="100" value="50" />
+        <span id="mode2-value"><%=lightMode2%></span>
+        <input type="range" id="mode2-slider" class="w-3/4" min="0" max="100" value="<%=lightMode2%>" />
       </div>
     
       <!-- Mode 3: Slider -->
       <div class="p-4 w-3/5 h-16 bg-gray-600 text-white rounded-3xl shadow-2xl text-center flex justify-between items-center">
-        <span id="mode3-value">25</span>
-        <input type="range" id="mode3-slider" class="w-3/4" min="0" max="100" value="25" />
+        <span id="mode3-value"><%=lightMode3%></span>
+        <input type="range" id="mode3-slider" class="w-3/4" min="0" max="100" value="<%=lightMode3%>" />
       </div>
     
       <!-- Mode 4: Fixed at 0 -->
@@ -72,6 +72,56 @@ class="w-full h-3/6 sm:w-5/12 sm:h-full rounded-2xl shadow-xl bg-white flex flex
         console.error('Error publishing message:', error);
       });
   };
+  const updateLightColor = (data) => {
+    fetch('http://localhost:3000/api/update_color', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Message published:', data);
+      })
+      .catch(error => {
+        console.error('Error publishing message:', error);
+      });
+  };
+  const updateLightBrightness = (data) => {
+    fetch('http://localhost:3000/api/update_brightness', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Message published:', data);
+      })
+      .catch(error => {
+        console.error('Error publishing message:', error);
+      });
+  };
+
+  function rgbToHex(r, g, b) {
+      r = Math.max(0, Math.min(255, r));
+      g = Math.max(0, Math.min(255, g));
+      b = Math.max(0, Math.min(255, b));
+
+      const hex = ((1 << 24) + (r << 16) + (g << 8) + b)
+          .toString(16)
+          .slice(1)
+          .toUpperCase();
+
+      return `#${hex}`;
+  }
+  const receiveR = parseInt(`<%=r%>`)
+  const receiveG = parseInt(`<%=g%>`)
+  const receiveB = parseInt(`<%=b%>`)
+  document.getElementById('colorPicker').value = rgbToHex(receiveR, receiveG, receiveB)
+
 
   document.getElementById("submitColorBtn").addEventListener("click", () => {
     const colorPicker = document.getElementById("colorPicker").value;
@@ -87,19 +137,25 @@ class="w-full h-3/6 sm:w-5/12 sm:h-full rounded-2xl shadow-xl bg-white flex flex
         b: b.toString(),
       },
     };
+    const colorObject = {
+      r: r.toString(),
+      g: g.toString(),
+      b: b.toString(),
+    }
     const data = {
       topic: '22127270/light/update/color',
       message: JSON.stringify(message),
     };
     submitData(data);
+    updateLightColor(colorObject);
   });
 
 
   // Initialize the default values for the sliders
   let brightnessMode = {
-    lightBrightnessMode_1: "100",
-    lightBrightnessMode_2: "50",
-    lightBrightnessMode_3: "25",
+    lightMode1: "100",
+    lightMode2: "50",
+    lightMode3: "25",
   };
 
   // Select sliders and submit button
@@ -114,17 +170,17 @@ class="w-full h-3/6 sm:w-5/12 sm:h-full rounded-2xl shadow-xl bg-white flex flex
 
   // Listen for slider changes and update the corresponding values
   mode1Slider.addEventListener('input', (event) => {
-    brightnessMode.lightBrightnessMode_1 = event.target.value;
+    brightnessMode.lightMode1 = event.target.value;
     mode1Value.textContent = event.target.value;  // Update the display text for Mode 1
   });
 
   mode2Slider.addEventListener('input', (event) => {
-    brightnessMode.lightBrightnessMode_2 = event.target.value;
+    brightnessMode.lightMode2 = event.target.value;
     mode2Value.textContent = event.target.value;  // Update the display text for Mode 2
   });
 
   mode3Slider.addEventListener('input', (event) => {
-    brightnessMode.lightBrightnessMode_3 = event.target.value;
+    brightnessMode.lightMode3 = event.target.value;
     mode3Value.textContent = event.target.value;  // Update the display text for Mode 3
   });
 
@@ -137,6 +193,7 @@ class="w-full h-3/6 sm:w-5/12 sm:h-full rounded-2xl shadow-xl bg-white flex flex
         value: brightnessMode,
       }),
     };
-    submitData(data);  // Call the function to submit the data
+    submitData(data);
+    updateLightBrightness(brightnessMode);
   });
 </script>

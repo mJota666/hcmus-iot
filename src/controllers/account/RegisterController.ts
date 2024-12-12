@@ -18,6 +18,17 @@ export const postRegisterController = async(req: Request, res:Response) => {
       password: hashedPassword,
       dob,
       gender,
+      lightMode1: "100", 
+      lightMode2: "50", 
+      lightMode3: "25", 
+      r: "255", 
+      g: "255", 
+      b: "255", 
+      startDate: Math.floor(Date.now() / 1000).toString(),
+      endDate: Math.floor(Date.now() / 1000).toString(),
+      startTime: "00:00:00",
+      endTime: "23:59:59",
+      fanMode: "1",
     });
     await userRegister.save(); 
     res.redirect('/')
