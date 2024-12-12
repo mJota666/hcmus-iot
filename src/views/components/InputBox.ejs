@@ -1,0 +1,48 @@
+<div id="input-box" class="w-full relative">
+  <input id="<%=id%>" class="w-full relative input-content" type="<%=type%>" name="<%=name%>" placeholder="" required />
+  <label for="<%=id%>" class="w-fit absolute px-2 text-sm" id="input-label"><%=title%></label>
+</div>
+<style>
+  input:focus {
+    outline: none;
+  }
+  .input-content {
+    padding-left: 50px;
+    border-radius: 50px;
+    border: 1px solid black;
+    height: 8vh;
+  }
+  #input-label {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5%;
+    transition:
+      top 0.4s ease,
+      left 0.4s ease,
+      font-size 0.4s ease,
+      color 0.4s ease;
+  }
+  .input-content:focus {
+    outline: 2px solid blue;
+    border: 1px solid blue;
+  }
+
+  .input-content:focus + #input-label,
+  .input-content:not(:placeholder-shown) + #input-label {
+    top: -5%;
+    left: 5%;
+    background-color: white;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: black !important;
+    border-radius: 50px;
+  }
+  input:-webkit-autofill + #input-label {
+    top: -5%;
+    left: 5%;
+    background-color: white;
+  }
+</style>

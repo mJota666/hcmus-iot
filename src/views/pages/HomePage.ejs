@@ -1,0 +1,501 @@
+<div
+  class="relative flex flex-col justify-center gap-6 items-center bg-gray-400 p-6 font-MuseoModerno"
+  style="height: 92vh; width: 100vw"
+>
+  <div
+    id="top-container"
+    class="w-full h-2/3 flex flex-col sm:flex-row justify-center items-center gap-6"
+  >
+    <div
+      id="toggle-container"
+      class="bg-gray-500 rounded-2xl shadow-2xl h-2/4 w-full sm:h-full sm:w-2/12 p-4 flex flex-col gap-4"
+    >
+      <div
+        id="toggle-fan"
+        class="w-full border-2 rounded-xl h-1/2 flex flex-row sm:flex-col justify-between items-center p-1 sm:p-2"
+      >
+        <div class="w-1/4 sm:w-full text-white font-bold text-center">FAN</div>
+
+        <input id="checkbox-fan" type="checkbox" />
+        <label class="switch" for="checkbox-fan">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            class="slider"
+          >
+            <path
+              d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z"
+            ></path>
+          </svg>
+        </label>
+        <div
+          id="fan-mode"
+          class="w-1/2 sm:w-full flex flex-row justify-between items-center gap-2 font-bold"
+        >
+          <div
+            id="fan-mode-1"
+            class="rounded-xl shadow-lg text-center w-1/3 bg-white hover:bg-gray-300 cursor-pointer transition-all duration-300"
+          >
+            1
+          </div>
+          <div
+            id="fan-mode-2"
+            class="rounded-xl shadow-lg text-center w-1/3 bg-white hover:bg-gray-300 cursor-pointer transition-all duration-300"
+          >
+            2
+          </div>
+          <div
+            id="fan-mode-3"
+            class="rounded-xl shadow-lg text-center w-1/3 bg-white hover:bg-gray-300 cursor-pointer transition-all duration-300"
+          >
+            3
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="toggle-light"
+        class="w-full border-2 rounded-xl h-1/2 flex flex-row sm:flex-col justify-between items-center p-1 sm:p-2"
+      >
+        <div class="w-1/4 sm:w-full text-white font-bold text-center">
+          LIGHT
+        </div>
+
+        <input id="checkbox-light" type="checkbox" />
+        <label class="switch" for="checkbox-light">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            class="slider"
+          >
+            <path
+              d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z"
+            ></path>
+          </svg>
+        </label>
+        <div
+          id="light-mode"
+          class="w-1/2 sm:w-full flex flex-row justify-between items-center gap-2 font-bold"
+        >
+          <div
+            id="light-mode-1"
+            class="rounded-xl shadow-lg text-center w-1/3 bg-white hover:bg-gray-300 cursor-pointer transition-all duration-300"
+          >
+            1
+          </div>
+          <div
+            id="light-mode-2"
+            class="rounded-xl shadow-lg text-center w-1/3 bg-white hover:bg-gray-300 cursor-pointer transition-all duration-300"
+          >
+            2
+          </div>
+          <div
+            id="light-mode-3"
+            class="rounded-xl shadow-lg text-center w-1/3 bg-white hover:bg-gray-300 cursor-pointer transition-all duration-300"
+          >
+            3
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="sensor-data"
+      class="bg-white rounded-2xl shadow-2xl h-2/4 w-full sm:h-full sm:w-10/12 flex flex-row gap-4 p-4"
+    >
+      <div
+        id="dht-data-container"
+        class="h-full w-3/12 sm:w-2/12 flex flex-col justify-evenly items-center gap-2 sm:gap-4"
+      >
+        <div class="font-bold hidden sm:block">Temperature</div>
+        <div class="font-bold sm:hidden">Temp</div>
+        <div
+          id="temperature-data"
+          class="w-full h-full rounded-xl border-gray-400 text-center flex justify-center items-center flex-col"
+          style="box-shadow: inset 1px 1px 4px black"
+        ></div>
+        <div class="font-bold hidden sm:block">Humidity</div>
+        <div class="font-bold sm:hidden">Humid</div>
+
+        <div
+          id="humidity-data"
+          class="w-full h-full rounded-xl border-gray-400 text-center flex justify-center items-center flex-col"
+          style="box-shadow: inset 1px 1px 4px black"
+        ></div>
+      </div>
+      <div
+        id="mq135-data-container"
+        class="h-full w-4/12 sm:w-5/12 flex flex-col justify-evenly items-center gap-2 sm:gap-4"
+      >
+        <div class="font-bold">Gas</div>
+        <div
+          id="mq135-data"
+          class="w-full h-full text-center flex justify-center items-center flex-col border-gray-400 rounded-xl"
+          style="box-shadow: inset 1px 1px 4px black"
+        ></div>
+      </div>
+      <div
+        id="gp2y-data-container"
+        class="h-full w-5/12 flex flex-col justify-evenly items-center gap-2 sm:gap-4"
+      >
+        <div class="font-bold hidden sm:block">Dust Density</div>
+        <div class="font-bold sm:hidden">Dust</div>
+        <div
+          id="gp2y-data"
+          class="w-full h-full text-center flex justify-center items-center flex-col border-gray-400 rounded-xl"
+          style="box-shadow: inset 1px 1px 4px black"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bottom-container" class="w-full h-1/3 rounded-2xl shadow-2xl flex flex-row gap-4 justify-center items-center">
+    <div id="chart" class="w-8/12 h-full bg-white rounded-2xl shadow-2xl flex justify-center items-center p-4 overflow-hidden">
+      <canvas id="sensorChart" class=" " style="width: 100%; height: 100%;"></canvas>
+      <div id="rawDataTableContainer" class="w-full h-5/6 mt-4 p-4 bg-white rounded-2xl shadow-2xl  overflow-y-auto" style="display: none"></div>
+      <button id="showRawDataBtn" class="m-2 p-2 bg-blue-500 text-white rounded ">Raw Data</button>
+      <button id="showChartBtn" class="m-2 p-2 bg-blue-500 text-white rounded " style="display: none;">Chart</button>
+    </div>
+
+
+    <div id="chat-container" class="w-4/12 h-full bg-white rounded-2xl shadow-2xl flex flex-col justify-between p-4">
+      <div id="chat-box" class="flex flex-col space-y-4 mb-4 p-2 bg-gray-100 rounded-lg overflow-y-auto">
+        <!-- Messages -->
+      </div>
+        <div class="flex items-center space-x-2">
+        <input type="text" id="user-input" placeholder="Ask something..." class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <button id="send-btn" class="p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300">
+          Send
+        </button>
+      </div>
+    </div>
+  
+  </div>
+</div>
+  
+<link rel="stylesheet" href="/css/toggle.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/chatBot.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+
+    const ctx = document.getElementById("sensorChart").getContext("2d");
+    let chart = new Chart(ctx, {
+      type: 'line', // Line chart type
+      data: {
+        labels: [],
+        datasets: [],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Timestamp'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Value'
+            }
+          }
+        }
+      }
+    });
+
+    const temperatureObject = document.getElementById("temperature-data");
+    const humidityObject = document.getElementById("humidity-data");
+    const mq135Object = document.getElementById("mq135-data");
+    const gp2yObject = document.getElementById("gp2y-data");
+
+    let currentPickData = '';
+  
+    setInterval(() => {
+      fetch("http://localhost:3000/api/receive_store_sensor_data")
+        .then((response) => response.json())
+        .then((data) => {
+          temperatureObject.textContent = data.temperature + " °C";
+          humidityObject.textContent = data.humidity + " %";
+          mq135Object.textContent = data.MQ135 + " PPM";
+          gp2yObject.textContent = data.dustDensity + " µg/m³";
+        })
+        .catch((error) => console.log("No data to fetch"));
+
+        fetch("http://localhost:3000/api/get_data")
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === "successfully") {
+            const sensorData = data.data;
+            const timestamps = sensorData.map(item => new Date(item.createdAt).toLocaleString());
+            
+            // Prepare the datasets
+            const temperatureData = sensorData.map(item => item.temperature);
+            const humidityData = sensorData.map(item => item.humidity);
+            const mq135Data = sensorData.map(item => item.MQ135);
+            const dustDensityData = sensorData.map(item => item.dustDensity);
+            // Update the chart based on the selected data
+            const updateChartData = (labels, dataset, chartname, color) => {
+              chart.data.labels = labels;
+              chart.data.datasets = [{
+                label: chartname,
+                data: dataset,
+                borderColor: color,
+                fill: false,
+                tension: 0.1
+              }];
+              chart.update();
+            };
+
+            // Event listeners for button clicks
+            document.getElementById("temperature-data").addEventListener("click", () => {
+              currentPickData = "temperature"
+              updateChartData(timestamps, temperatureData, 'Temperature', '#2C6E8F'); // Dark Blue
+            });
+
+            document.getElementById("humidity-data").addEventListener("click", () => {
+              currentPickData = "humidity"
+              updateChartData(timestamps, humidityData, 'Humidity', '#F68A7F');       // Dark Coral
+            });
+
+            document.getElementById("mq135-data").addEventListener("click", () => {
+              currentPickData = "mq135"
+              updateChartData(timestamps, mq135Data, 'Air Quality (MQ135)', '#388E3C'); // Dark Green
+            });
+
+            document.getElementById("gp2y-data").addEventListener("click", () => {
+              currentPickData = "gp2y"
+              updateChartData(timestamps, dustDensityData, 'Dust Density', '#F6D02F'); // Dark Yellow
+            });
+            
+            document.getElementById("showChartBtn").addEventListener("click", () => {
+              document.getElementById("showRawDataBtn").style.display = "flex";
+              document.getElementById("showChartBtn").style.display = "none";
+              document.getElementById("rawDataTableContainer").style.display = "none";
+              document.getElementById("sensorChart").style.display = "flex";
+            })
+
+            document.getElementById("showRawDataBtn").addEventListener("click", (e) => {
+              document.getElementById("rawDataTableContainer").style.display = "flex";
+              document.getElementById("sensorChart").style.display = "none";
+              document.getElementById("showRawDataBtn").style.display = "none";
+              document.getElementById("showChartBtn").style.display = "flex";
+              if (currentPickData === '') {
+                  alert('Please select a data type first!');
+                  return;
+              }
+              createRawDataTable(timestamps, dataset);
+            });  
+            let dataset;
+            switch (currentPickData) {
+                case 'temperature':
+                    dataset = temperatureData;
+                    break;
+                case 'humidity':
+                    dataset = humidityData;
+                    break;
+                case 'mq135':
+                    dataset = mq135Data;
+                    break;
+                case 'gp2y':
+                    dataset = dustDensityData;
+                    break;
+                default:
+                    dataset = [];
+            }
+            
+          } else {
+            console.error("Error fetching data", data);
+          }
+    })
+    .catch(error => {
+      console.error("Error fetching data:", error);
+    });
+        
+    }, 2000);
+    
+    // Function to create a table with raw data
+    const createRawDataTable = (labels, dataset) => {
+      const tableContainer = document.getElementById('rawDataTableContainer');
+      tableContainer.innerHTML = ''; // Clear previous table if any
+
+      // Create table
+      const table = document.createElement('table');
+      table.classList.add('w-full', 'border-collapse', 'table-auto');
+      const thead = document.createElement('thead');
+      const tbody = document.createElement('tbody');
+
+      // Table header
+      const headerRow = document.createElement('tr');
+      const headerLabels = ['Timestamp', currentPickData.charAt(0).toUpperCase() + currentPickData.slice(1)];
+      headerLabels.forEach(headerText => {
+          const th = document.createElement('th');
+          th.classList.add('p-2', 'border', 'text-left');
+          th.textContent = headerText;
+          headerRow.appendChild(th);
+      });
+      thead.appendChild(headerRow);
+
+      // Table body with data
+      labels.forEach((label, index) => {
+          const row = document.createElement('tr');
+          const timestampCell = document.createElement('td');
+          timestampCell.classList.add('p-2', 'border');
+          timestampCell.textContent = label;
+
+          const dataCell = document.createElement('td');
+          dataCell.classList.add('p-2', 'border');
+          dataCell.textContent = dataset[index];
+
+          row.appendChild(timestampCell);
+          row.appendChild(dataCell);
+          tbody.appendChild(row);
+      });
+
+      table.appendChild(thead);
+      table.appendChild(tbody);
+      tableContainer.appendChild(table);
+  };
+    
+    const submitData = (data) => {
+      fetch('http://localhost:3000/api/publish_data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Message published:', data);
+      })
+      .catch(error => {
+        console.error('Error publishing message:', error);
+      });
+    }
+    document.getElementById("checkbox-fan").addEventListener('click',  (event) => {
+      const topic = '22127060/fan/control/toggle'
+      const message = {
+          title: "toggle_fan",
+          value: {
+              status: event.target.checked ? "ON" : "OFF",
+          }
+      };
+      const data = {
+        topic: topic,
+        message: JSON.stringify(message)
+      };
+      submitData(data)
+    })
+    document.getElementById("fan-mode-1").addEventListener('click',  (event) => {
+      const topic = '22127060/fan/control/toggle'
+      const message = {
+          title: "change_fanmode",
+          value: {
+              mode: "1",
+          }
+      };
+      const data = {
+        topic: topic,
+        message: JSON.stringify(message)
+      };
+      submitData(data)
+    })
+    document.getElementById("fan-mode-2").addEventListener('click',  (event) => {
+      const topic = '22127060/fan/control/toggle'
+      const message = {
+          title: "change_fanmode",
+          value: {
+              mode: "2",
+          }
+      };
+      const data = {
+        topic: topic,
+        message: JSON.stringify(message)
+      };
+      submitData(data)
+    })
+    document.getElementById("fan-mode-1").addEventListener('click',  (event) => {
+      const topic = '22127060/fan/control/toggle'
+      const message = {
+          title: "change_fanmode",
+          value: {
+              mode: "3",
+          }
+      };
+      const data = {
+        topic: topic,
+        message: JSON.stringify(message)
+      };
+      submitData(data)
+    })
+
+
+    document.getElementById("checkbox-light").addEventListener('click',  (event) => {
+      const topic = '22127270/light/control'
+      const message = {
+          title: "toggle_light",
+          value: {
+              lightStatus: event.target.checked ? "ON" : "OFF",
+              lightMode: "1"
+          }
+      };
+      const data = {
+        topic: topic,
+        message: JSON.stringify(message)
+      };
+      submitData(data)
+    })
+    document.getElementById("light-mode-1").addEventListener('click', (event) => {
+      const topic = '22127270/light/control'
+      document.getElementById("checkbox-light").checked = true;
+      const message = {
+          title: "toggle_light",
+          value: {
+            lightStatus: "ON",
+            lightMode: "1"
+          }
+      };
+      const data = {
+        topic: topic,
+        message: JSON.stringify(message)
+      };
+      submitData(data)
+    })
+    document.getElementById("light-mode-2").addEventListener('click', (event) => {
+      const topic = '22127270/light/control'
+      document.getElementById("checkbox-light").checked = true;
+
+      const message = {
+          title: "toggle_light",
+          value: {
+            lightStatus: "ON",
+            lightMode: "2"
+          }
+      };
+      const data = {
+        topic: topic,
+        message: JSON.stringify(message)
+      };
+      submitData(data)
+    })
+    document.getElementById("light-mode-3").addEventListener('click', (event) => {
+      const topic = '22127270/light/control'
+      document.getElementById("checkbox-light").checked = true;
+
+      const message = {
+          title: "toggle_light",
+          value: {
+            lightStatus: "ON",
+            lightMode: "3"
+          }
+      };
+      const data = {
+        topic: topic,
+        message: JSON.stringify(message)
+      };
+      submitData(data)
+    })
+    });
+</script>

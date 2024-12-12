@@ -1,0 +1,56 @@
+<div
+  class="relative flex justify-center items-center text-center shadow-2xl border-b-2 font-MuseoModerno text-[10px] md:text-[13px]"
+  style="height: 8vh"
+>
+  <div
+    id="header-container"
+    class="w-full flex flex-row justify-evenly items-center p-4"
+  >
+    <div
+      id="right-header"
+      class="w-4/12 h-full flex flex-row justify-start items-center gap-4"
+    >
+      <a
+        href="/home"
+        id="dir-home"
+        class="p-1 sm:p-2 bg-gray-300 w-2/3 rounded-sm shadow-sm border-black border-2 hover:bg-gray-400 transition-all duration-300"
+        >HOME</a
+      >
+      <a
+        href="/account"
+        id="dir-account"
+        class="p-1 sm:p-2 bg-gray-300 w-2/3 rounded-sm shadow-sm border-black border-2 hover:bg-gray-400 transition-all duration-300"
+        >ACCOUNT</a
+      >
+    </div>
+
+    <div
+      class="w-3/12 sm:w-4/12 text-sm sm:text-2xl lg:text-3xl italic font-bold"
+    >
+      <%=title%>
+    </div>
+    <div
+      id="left-header"
+      class="w-4/12 h-full flex flex-row justify-start items-center gap-4"
+    >
+      <a
+        href="/af-setting"
+        id="dir-af-setting"
+        class="sm:block hidden p-1 sm:p-2 bg-gray-300 w-2/3 rounded-sm shadow-sm border-black border-2 hover:bg-gray-400 transition-all duration-300"
+        >AIR FILTER</a
+      >
+      <a
+        href="/af-setting"
+        id="dir-af-setting"
+        class="sm:hidden block p-1 sm:p-2 bg-gray-300 w-2/3 rounded-sm shadow-sm border-black border-2 hover:bg-gray-400 transition-all duration-300"
+        >AF</a
+      >
+      <a
+        href="light-setting"
+        id="dir-light-setting"
+        class="p-1 sm:p-2 bg-gray-300 w-2/3 rounded-sm shadow-sm border-black border-2 hover:bg-gray-400 transition-all duration-300"
+        >LIGHT</a
+      >
+    </div>
+  </div>
+</div>

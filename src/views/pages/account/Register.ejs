@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Niconne&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/output.css" />
+
+    <title>Register</title>
+  </head>
+  <body>
+    <div
+      class="hidden sm:flex flex-row justify-center items-center"
+      style="width: 100vw; height: 100vh"
+    >
+      <div
+        id="right-register-container"
+        style="width: 55vw; height: 100vh; padding: 20px"
+      >
+        <div
+          style="
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.pinimg.com/736x/0f/8d/a6/0f8da6c7f17143ac0f88a99fc8eeb773.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: scaleX(-1);
+            border-radius: 50px;
+            box-shadow: black 1px 1px 10px;
+          "
+        ></div>
+      </div>
+      <div
+        id="left-register-form"
+        class="flex flex-col justify-center items-center"
+        style="width: 45vw; height: 100vh; padding: 0px 40px"
+      >
+        <form
+          action="/register"
+          method="POST"
+          class="flex flex-col justify-evenly items-center"
+          style="width: 100%; height: 85%"
+        >
+          <h2 class="font-niconne italic text-center text-5xl">Register</h2>
+          <%-include ('../../components/InputBox.ejs', { title:"Enter Name",  type: "text", name:"name", id:"name" })%>
+          <%-include ('../../components/InputBox.ejs', {title:"Enter Email", type: "email", name:"email", id:"email" })%>
+          <%-include ('../../components/InputBox.ejs', {title:"Enter Password", type: "password", name:"password", id:"password" })%>
+          
+          <div
+            id="dob-gender"
+            class="flex flex-row justify-between items-center"
+            style="width: 100%"
+          >
+            <%-include ('../../components/InputBox.ejs', { title: "Date Of Birth", type: "date", name:"dob", id:"dob" })%>
+            <div
+              class="flex flex-col justify-center items-center"
+              style="width: 37%; padding: 0; margin: 0"
+            >
+              <select
+                name="gender"
+                id="gender"
+                class="w-full border rounded pl-10"
+                required
+                style="border-radius: 50px; height: 8vh"
+              >
+                <option value="male" disabled selected>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <p>
+              Already have an account ?
+              <a href="/" class="font-bold hover:underline">Login</a>
+            </p>
+          </div>
+
+          <%-include('../../components/SubmitButton', { title:'Register' })%>
+        </form>
+      </div>
+    </div>
+
+    <div
+      class="sm:hidden flex flex-row justify-center items-center"
+      style="width: 100vw; height: 100vh"
+    >
+      <div
+        id="right-register-container"
+        style="width: 100vw; height: 100vh; padding: 20px"
+      >
+        <div
+          style="
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.pinimg.com/736x/0f/8d/a6/0f8da6c7f17143ac0f88a99fc8eeb773.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: scaleX(-1);
+            border-radius: 50px;
+            box-shadow: black 1px 1px 10px;
+          "
+        ></div>
+      </div>
+      <div
+        id="left-register-form"
+        class="absolute flex flex-col justify-center items-center"
+        style="width: 45vw; height: 100vh; padding: 0px 40px"
+      >
+        <form
+          action="/register"
+          method="POST"
+          class="flex flex-col justify-evenly items-center"
+          style="
+            width: 70vw;
+            height: 85%;
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+          "
+        >
+          <h2 class="font-niconne italic text-center text-5xl">Register</h2>
+          <%-include ('../../components/InputBox.ejs', { title:"Enter Name", type: "text", name:"name", id:"name" })%>
+          <%-include ('../../components/InputBox.ejs', {title:"Username", type: "text", name:"username", id:"username" })%>
+          <%-include ('../../components/InputBox.ejs', {title:"Enter Email", type: "email", name:"email", id:"email" })%>
+          <%-include ('../../components/InputBox.ejs', {title:"Enter Password", type: "password", name:"password", id:"password" })%>
+
+          <div
+            class="flex flex-col justify-center items-center"
+            style="width: 100%; padding: 0; margin: 0"
+          >
+            <select
+              name="gender"
+              id="gender"
+              class="w-full border rounded pl-10"
+              required
+              style="border-radius: 50px; height: 8vh"
+            >
+              <option value="male" disabled selected>Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <p style="font-size: 12px">
+              Already have an account ?
+              <a href="/login" class="font-bold hover:underline">Login</a>
+            </p>
+          </div>
+
+          <%-include('../../components/SubmitButton', { title:'Register' })%>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>
+    const dob = document.querySelector("#dob");
+    if (dob) {
+      dob.parentElement.style.width = "60%";
+    }
+  </script>
+</html>

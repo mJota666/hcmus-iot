@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "typeRoots": ["./node_modules/@types", "./src/types"]
+
+  },
+  "include": ["src/**/*", "public/ts/fetchData.ts", "src/types/express-session.d.ts"],
+  "exclude": ["node_modules"]
+}

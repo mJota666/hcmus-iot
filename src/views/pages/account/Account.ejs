@@ -1,0 +1,15 @@
+<div class="p-6 flex flex-col justify-center gap-6  items-center font-MuseoModerno bg-slate-400" style="width: 100vw; height: 92vh">
+    <div id="avatar" class="rounded-2xl shadow-xl w-full h-1/2 bg-white flex justify-center items-center" >
+        <img src="https://img.freepik.com/premium-photo/3d-avatar-boy-character_914455-603.jpg" class="shadow-2xl" style="width: 250px; height: 250px; border-radius: 50%;" alt="">
+    </div>
+    <div id="information" class="rounded-2xl shadow-xl w-full h-1/2 bg-white p-4 gap-4 text-2xl flex flex-row justify-center items-center" >
+        <div id="left-group" class="w-1/2 h-full flex flex-col justify-center items-start gap-3 p-4" >
+            <div>Name: <%=userData.name%></div>
+            <div>Email: <%=userData.email%></div>
+            <div>Gender: <%=userData.gender%></div>
+            <div>Date of birth: <%=userData.dob%></div>
+        </div>
+        
+        <div id="right-group" class="w-1/2 h-full flex flex-row justify-center items-center" style="border-left: 5px dashed black;">Created Date: <%=userData.createdAt%></div>
+    </div>
+</div>

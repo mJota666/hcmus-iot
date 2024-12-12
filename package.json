@@ -1,0 +1,46 @@
+{
+  "name": "hcmus-iot",
+  "version": "1.0.0",
+  "description": "Web Controlling Device Through ESP32",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently  \"nodemon\" \"npm run tailwind:css\"",
+    "tailwind:css": "tailwindcss -i public/css/input.css -o public/css/output.css --watch"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.8.4",
+    "mqtt": "^5.10.3",
+    "openai": "^4.76.2",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "tsx": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.0",
+    "@types/express-session": "^1.18.1",
+    "@types/mongoose": "^5.11.97",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.10.1",
+    "concurrently": "^9.1.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.7",
+    "tailwindcss": "^3.4.16",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
