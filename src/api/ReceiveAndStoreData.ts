@@ -8,9 +8,38 @@ const handleMqttData = (data: string) => {
 };
 connectToMqttBroker(handleMqttData);
 
+
+let intervalPusher: string | number | NodeJS.Timeout | undefined; 
+
+function startPusher() {
+  intervalPusher = setInterval(() => {
+    fetch("https://www.pushsafer.com/api?k=RgFd6WlLmbsmNaJ1cTzW&m=Air%20quality%20Not%20Good")
+      .then(response => response.json())
+      .then(data => {
+        console.log("Data sent:", data); 
+      })
+      .catch(error => {
+        console.error("Error sending data:", error);
+      });
+  }, 10000);
+}
+function stopPusher() {
+  clearInterval(intervalPusher);
+}
+
+
 const savaData = async () => {
   try {
     const sensorData = new SensorDataModel(receivedData);
+    if (sensorData.MQ135 >= 2000 || sensorData.dustDensity >= 1) {
+      if (!intervalPusher) {
+        startPusher();
+      }
+    } else {
+      if (intervalPusher) {  
+          stopPusher();
+      }
+    }
     await sensorData.save();
     console.log("Saving data successfully !");
   } catch (error) {

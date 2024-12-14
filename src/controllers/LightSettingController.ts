@@ -12,7 +12,8 @@ const LightSettingController = async(req: Request, res: Response) => {
 
     if (!user) {
       return res.status(404).send({ message: "User not found" });
-    }  res.render("layouts/main", {
+    }  
+    res.render("layouts/main", {
       body: "../pages/LightSettingPage",
       title: "Light Setting",
       lightMode1: user.lightMode1,

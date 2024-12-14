@@ -6,7 +6,11 @@
     id="calendar"
     class="w-full h-3/6 sm:w-5/12 sm:h-full rounded-2xl shadow-xl bg-white flex flex-col justify-center items-center"
   >
-    <div class="font-bold text-sm sm:text-2xl">Calendar</div>
+  <div class="font-bold text-sm sm:text-2xl w-full h-1/6 flex flex-col justify-center items-center">Calendar</div>
+  <div class="w-full h-5/6 flex flex-col justify-start items-center gap-4 pt-">
+    <input type="text" id="calendar-input" class="w-full p-2 rounded-xl mt-4" />
+  </div>
+
   </div>
   <div
     id="auto-turn-fan"
@@ -43,7 +47,28 @@
     </div>
   </div>
 </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<style>
+  #calendar-input {
+    display: none;
+  }
+</style>
+
 <script>
+  const startDateEpoch = `<%=startDate%>`
+  const endDateEpoch = `<%=endDate%>`
+  const startDateFormatted = new Date(startDateEpoch).toISOString().split('T')[0];
+  const endDateFormatted = new Date(endDateEpoch).toISOString().split('T')[0];
+  flatpickr("#calendar-input", {
+    inline: true, 
+    dateFormat: "Y-m-d",
+    enable: [
+      { from: startDateFormatted, to: endDateFormatted }, // Highlight single date
+    ],
+  });
+
   // Get the submit button
   const submitButton = document.getElementById("submitSettingTime");
 
@@ -83,6 +108,15 @@
 
     // Submit the data
     submitData(data);
+    const timeData = {
+      startDate: startDateTimestamp.toString(),
+      endDate: endDateTimestamp.toString(),
+      startTime: startTime,
+      endTime: endTime,
+      fanMode: mode, 
+    }
+    updateTimeTurningFan(timeData)
+    console.log(timeData)
   });
 
   // Submit data function
@@ -102,7 +136,22 @@
         console.error("Error publishing message:", error);
       });
   };
-
+  const updateTimeTurningFan = (data) => {
+    fetch('http://localhost:3000/api/update_fan_time', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Message published:', data);
+      })
+      .catch(error => {
+        console.error('Error publishing message:', error);
+      });
+  };
   const setDefault = () => {
     const currentDate = new Date();
 

@@ -12,6 +12,7 @@ import { publishMessage } from "./config/mqtt/connectToMqttBroker";
 import PublishData from "./api/PublishData";
 import updateUserLightColor from "./api/updateUserLightColor";
 import updateUserLightBrightness from "./api/updateUserLightBrightness";
+import updateTimeTurningFan from "./api/updateTimeTurningFan";
 
 const port: number = 3000;
 const app: Express = express();
@@ -41,6 +42,7 @@ PublishData(app);
 GetData(app);
 updateUserLightColor(app);
 updateUserLightBrightness(app);
+updateTimeTurningFan(app);
 
 
 /* Set view Engine */
